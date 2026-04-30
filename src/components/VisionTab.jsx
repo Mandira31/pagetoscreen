@@ -42,7 +42,8 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
   const [isGenerating, setIsGenerating] = useState(false)
   const [showShareModal, setShowShareModal] = useState(false)
   const [shareMessage, setShareMessage] = useState('')
-  const [copyLabel, setCopyLabel] = useState('Copy to clipboard')
+  const [copyLabel, setCopyLabel] = useState('Copy Message')
+  const [copyLinkLabel, setCopyLinkLabel] = useState('Copy Link')
 
   const getShareTemplate = () => {
     if (!book) return ''
@@ -52,7 +53,8 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
   const openShareModal = () => {
     if (!book) return
     setShareMessage(getShareTemplate())
-    setCopyLabel('Copy to clipboard')
+    setCopyLabel('Copy Message')
+    setCopyLinkLabel('Copy Link')
     setShowShareModal(true)
   }
 
@@ -60,17 +62,20 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
     try {
       await navigator.clipboard.writeText(shareMessage)
       setCopyLabel('Copied ✓')
-      setTimeout(() => setCopyLabel('Copy to clipboard'), 2000)
+      setTimeout(() => setCopyLabel('Copy Message'), 2000)
     } catch (error) {
       console.warn('Copy failed', error)
     }
   }
 
-  const handleLinkedInShare = () => {
-    window.open(
-      'https://www.linkedin.com/sharing/share-offsite/?url=pagetoscreen.vercel.app',
-      '_blank'
-    )
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText('pagetoscreen.vercel.app')
+      setCopyLinkLabel('Link Copied ✓')
+      setTimeout(() => setCopyLinkLabel('Copy Link'), 2000)
+    } catch (error) {
+      console.warn('Copy failed', error)
+    }
   }
 
   const closeShareModal = () => {
@@ -86,7 +91,8 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
   useEffect(() => {
     setCurrentChar(book?.chars?.[0] || '')
     setShareMessage(getShareTemplate())
-    setCopyLabel('Copy to clipboard')
+    setCopyLabel('Copy Message')
+    setCopyLinkLabel('Copy Link')
   }, [book])
 
   const handleGenerate = async () => {
@@ -227,8 +233,8 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
                 <button className="share-copy-button" type="button" onClick={handleShareCopy}>
                   {copyLabel}
                 </button>
-                <button className="share-linkedin-button" type="button" onClick={handleLinkedInShare}>
-                  Share on LinkedIn
+                <button className="share-link-button" type="button" onClick={handleCopyLink}>
+                  {copyLinkLabel}
                 </button>
               </div>
             </div>

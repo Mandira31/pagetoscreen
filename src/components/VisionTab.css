@@ -72,31 +72,34 @@
 }
 
 .share-copy-button,
-.share-linkedin-button {
-  border: none;
+.share-link-button {
   padding: 9px 20px;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  font-family: Outfit, sans-serif;
 }
 
 .share-copy-button {
-  background: #1C1814;
+  background: var(--ink);
   color: white;
+  border: none;
 }
 
 .share-copy-button:hover {
   background: #7A9E7E;
 }
 
-.share-linkedin-button {
-  background: #0A66C2;
-  color: white;
+.share-link-button {
+  background: none;
+  border: 0.5px solid var(--border);
+  color: var(--ink);
+  transition: border-color 0.2s;
 }
 
-.share-linkedin-button:hover {
-  opacity: 0.9;
+.share-link-button:hover {
+  border-color: var(--ink);
 }
 
 .poster-section {
