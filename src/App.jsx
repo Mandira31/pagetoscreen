@@ -15,7 +15,7 @@ import './components/AboutTab.css'
 const TAB_LABELS = [
   { key: 'ballot', label: 'THE BALLOT' },
   { key: 'nominate', label: 'NOMINATE' },
-  { key: 'vision', label: 'THIS MONTH' },
+  { key: 'vision', label: 'BOOKS' },
   { key: 'letters', label: 'LETTERS' },
   { key: 'about', label: 'ABOUT' }
 ]
