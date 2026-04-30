@@ -3,6 +3,102 @@
   gap: 26px;
 }
 
+.share-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 24, 20, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-modal {
+  background: #F2EDE4;
+  max-width: 480px;
+  width: 90%;
+  padding: 2rem;
+  position: relative;
+  border-radius: 20px;
+}
+
+.share-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--muted);
+  background: none;
+  border: none;
+}
+
+.share-modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.share-modal-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.share-modal-textarea {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  border-bottom: 0.5px solid var(--border);
+  background: transparent;
+  font-family: Outfit, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+  resize: none;
+  padding: 0.5rem 0;
+}
+
+.share-modal-textarea:focus {
+  outline: none;
+}
+
+.share-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.share-copy-button,
+.share-linkedin-button {
+  border: none;
+  padding: 9px 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.share-copy-button {
+  background: #1C1814;
+  color: white;
+}
+
+.share-copy-button:hover {
+  background: #7A9E7E;
+}
+
+.share-linkedin-button {
+  background: #0A66C2;
+  color: white;
+}
+
+.share-linkedin-button:hover {
+  opacity: 0.9;
+}
+
 .poster-section {
   display: grid;
   gap: 20px;

@@ -40,20 +40,53 @@ const getCharacterSnippet = (book, char) => {
 export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, loading }) {
   const [currentChar, setCurrentChar] = useState(book?.chars?.[0] || '')
   const [isGenerating, setIsGenerating] = useState(false)
-  const [shareText, setShareText] = useState('Share')
+  const [showShareModal, setShowShareModal] = useState(false)
+  const [shareMessage, setShareMessage] = useState('')
+  const [copyLabel, setCopyLabel] = useState('Copy to clipboard')
 
-  const handleShare = () => {
+  const getShareTemplate = () => {
+    if (!book) return ''
+    return `I just voted for "${book.title}" by ${book.author} on Page to Screen — a platform where readers decide what gets adapted next. The AI wrote the opening scene. Check it out: pagetoscreen.vercel.app`
+  }
+
+  const openShareModal = () => {
     if (!book) return
-    navigator.clipboard.writeText(
-      `I just voted for "${book.title}" on Page to Screen — where readers decide what gets adapted next. The AI wrote the opening scene. Check it out: pagetoscreen.vercel.app`
+    setShareMessage(getShareTemplate())
+    setCopyLabel('Copy to clipboard')
+    setShowShareModal(true)
+  }
+
+  const handleShareCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareMessage)
+      setCopyLabel('Copied ✓')
+      setTimeout(() => setCopyLabel('Copy to clipboard'), 2000)
+    } catch (error) {
+      console.warn('Copy failed', error)
+    }
+  }
+
+  const handleLinkedInShare = () => {
+    window.open(
+      'https://www.linkedin.com/sharing/share-offsite/?url=pagetoscreen.vercel.app',
+      '_blank'
     )
-    setShareText('Copied ✓')
-    setTimeout(() => setShareText('Share'), 2000)
+  }
+
+  const closeShareModal = () => {
+    setShowShareModal(false)
+  }
+
+  const handleOverlayClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeShareModal()
+    }
   }
 
   useEffect(() => {
     setCurrentChar(book?.chars?.[0] || '')
-    setShareText('Share')
+    setShareMessage(getShareTemplate())
+    setCopyLabel('Copy to clipboard')
   }, [book])
 
   const handleGenerate = async () => {
@@ -73,10 +106,11 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
         <div style={{
           display: 'flex',
           justifyContent: 'flex-end',
-          marginBottom: '0.75rem'
+          marginBottom: '0',
+          paddingBottom: '0'
         }}>
           <button
-            onClick={handleShare}
+            onClick={openShareModal}
             style={{
               background: '#1C1814',
               color: 'white',
@@ -93,7 +127,7 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
             onMouseEnter={(e) => { e.target.style.background = '#7A9E7E' }}
             onMouseLeave={(e) => { e.target.style.background = '#1C1814' }}
           >
-            {shareText}
+            Share
           </button>
         </div>
         <div style={{
@@ -177,6 +211,29 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
             {getCharacterSnippet(book, currentChar)}
           </div>
         </div>
+
+        {showShareModal && (
+          <div className="share-modal-overlay" onClick={handleOverlayClick}>
+            <div className="share-modal" onClick={(event) => event.stopPropagation()}>
+              <button className="share-modal-close" onClick={closeShareModal}>×</button>
+              <h3 className="share-modal-title">Share this book</h3>
+              <p className="share-modal-subtitle">Edit the message before sharing</p>
+              <textarea
+                className="share-modal-textarea"
+                value={shareMessage}
+                onChange={(event) => setShareMessage(event.target.value)}
+              />
+              <div className="share-modal-actions">
+                <button className="share-copy-button" type="button" onClick={handleShareCopy}>
+                  {copyLabel}
+                </button>
+                <button className="share-linkedin-button" type="button" onClick={handleLinkedInShare}>
+                  Share on LinkedIn
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="vision-copy">
           <p className="vision-logline">“{book.logline}”</p>
