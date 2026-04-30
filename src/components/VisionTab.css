@@ -1,0 +1,264 @@
+.vision-tab {
+  display: grid;
+  gap: 26px;
+}
+
+.poster-section {
+  display: grid;
+  gap: 20px;
+  position: relative;
+}
+
+@media (max-width: 720px) {
+  .vision-share-wrapper {
+    position: static;
+    align-items: flex-start;
+  }
+}
+
+.poster-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.poster-regenerate {
+  border: none;
+  background: #7A9E7E;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: opacity var(--transition);
+}
+
+.poster-regenerate:hover {
+  opacity: 0.85;
+}
+
+.poster-switcher {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.char-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #7A9E7E;
+  color: #FFFFFF;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: opacity var(--transition);
+}
+
+.char-chip.active {
+  background: #1C1814;
+  color: #FFFFFF;
+}
+
+.char-chip:hover {
+  opacity: 0.85;
+}
+
+.poster-frame {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #090915 0%, #020204 100%);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.14);
+}
+
+.poster-image {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.poster-loader,
+.poster-fallback {
+  width: 100%;
+  height: 340px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #08080f 0%, #000000 100%);
+}
+
+.poster-loader span,
+.poster-fallback span {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #ffffff;
+  opacity: 0.92;
+}
+
+.poster-loader span {
+  animation: poster-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes poster-pulse {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.poster-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 22px 28px 24px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.92) 90%);
+  color: #ffffff;
+}
+
+.poster-title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.poster-author,
+.poster-genre {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+}
+
+.poster-genre {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vision-copy {
+  background: var(--white);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+.vision-logline {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  margin: 0 0 24px;
+}
+
+.vision-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.feature-box {
+  background: var(--sage-light);
+  border-radius: 20px;
+  padding: 16px;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.vision-feeling {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.vision-stats {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.screenplay-panel {
+  background: #04040a;
+  border-radius: 28px;
+  padding: 28px;
+  color: #eef2ee;
+}
+
+.screenplay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.screenplay-header h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.screenplay-header p {
+  margin: 8px 0 0;
+  color: rgba(238, 238, 238, 0.72);
+}
+
+.screenplay-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.generate-button,
+.download-button {
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+}
+
+.generate-button {
+  background: var(--sage);
+  color: var(--white);
+}
+
+.download-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ee;
+}
+
+.screenplay-copy {
+  margin-top: 24px;
+  border-radius: 18px;
+  background: #0f1117;
+  padding: 26px;
+  min-height: 280px;
+}
+
+.screenplay-copy pre {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  color: #dcdfe4;
+}
+
+.screenplay-empty {
+  margin: 0;
+  color: rgba(238, 238, 238, 0.72);
+}
+
+.empty-state {
+  color: var(--muted);
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 860px) {
+  .vision-features {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,109 @@
+.about-tab {
+  background: #EEF2EE;
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+}
+
+.about-copy {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-family: Papyrus, fantasy;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #1C1814;
+  font-weight: normal;
+}
+
+.about-body {
+  font-family: Outfit, sans-serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #3A3830;
+}
+
+.about-body p {
+  margin-bottom: 1.25rem;
+}
+
+.about-opening {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: #1C1814;
+  margin-bottom: 1.25rem;
+}
+
+.about-built {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #1C1814;
+  margin-bottom: 1.25rem;
+}
+
+.about-mission {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #7A9E7E;
+  margin-bottom: 1.25rem;
+}
+
+.about-community {
+  margin-bottom: 1.25rem;
+}
+
+.about-community p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: #1C1814;
+  line-height: 2.2;
+  margin-bottom: 0;
+}
+
+.about-papyrus-section {
+  margin-top: 2.5rem;
+}
+
+.about-papyrus-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #7A9E7E;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #1C1814;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #7A9E7E;
+}
+
+.about-footer p {
+  margin: 0;
+}
+
+.about-contact {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #5D6A5C;
+}
+
+.about-contact a {
+  color: #1C1814;
+  text-decoration: underline;
+}

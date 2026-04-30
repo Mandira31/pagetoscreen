@@ -1,0 +1,198 @@
+.App {
+  background: var(--paper);
+  min-height: 100vh;
+}
+
+.page-frame {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 80px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 22px;
+}
+
+.header-date {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-family: Papyrus, fantasy;
+  font-size: 2.2rem;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+
+.brand-title span {
+  font-style: italic;
+  color: var(--sage);
+}
+
+.pill-button {
+  padding: 10px 20px;
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.pill-button:hover {
+  background: var(--sage);
+  transform: translateY(-1px);
+}
+
+.tab-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 18px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--sage);
+  overflow-x: auto;
+}
+
+.tab-button {
+  background: none;
+  color: var(--muted);
+  border: none;
+  padding: 8px 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.tab-button.active {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.status-bar {
+  min-height: 24px;
+  margin: 18px 0 1px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.tab-content {
+  margin-top: 24px;
+}
+
+.app-footer {
+  background: var(--white);
+  color: var(--ink);
+  padding: 1.25rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 80px;
+}
+
+.footer-left {
+  flex: 0 0 auto;
+}
+
+.footer-brand {
+  font-family: Papyrus, fantasy;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.footer-center {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.footer-center p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.footer-right {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer-disclaimer {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  color: #6D6B60;
+  max-width: 240px;
+}
+
+.footer-feedback {
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122, 158, 126, 0.2);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.footer-feedback:hover {
+  color: var(--ink);
+  border-color: rgba(28, 24, 20, 0.4);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .page-frame {
+    padding: 18px 16px 60px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tab-row {
+    gap: 16px;
+  }
+
+  .footer-main {
+    flex-direction: column;
+  }
+
+  .footer-center {
+    order: 2;
+  }
+
+  .app-footer {
+    padding: 2rem 1.5rem;
+  }
+}
