@@ -2,7 +2,10 @@ export default function AboutTab() {
   return (
     <div className="about-tab">
       <div className="about-copy">
-        <h1 className="about-title">Page to Screen</h1>
+        <p className="about-disclaimer">
+          We believe in human storytelling. The AI-generated screenplay is a proof of concept — the craft belongs to the writers.
+        </p>
+        <hr className="about-divider" />
 
         <div className="about-body">
           <p className="about-opening">I got tired of watching the same story told again.</p>

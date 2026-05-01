@@ -9,13 +9,19 @@
   margin: 0 auto;
 }
 
-.about-title {
-  font-family: Papyrus, fantasy;
-  font-size: 3rem;
+.about-disclaimer {
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(28, 24, 20, 0.45);
   text-align: center;
-  margin-bottom: 2.5rem;
-  color: #1C1814;
-  font-weight: normal;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.about-divider {
+  border: none;
+  border-top: 0.5px solid rgba(28, 24, 20, 0.1);
+  margin-bottom: 1.5rem;
 }
 
 .about-body {
