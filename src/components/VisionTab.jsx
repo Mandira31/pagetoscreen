@@ -262,16 +262,41 @@ export default function VisionTab({ book, onGenerateScreenplay, onDownloadPdf, l
             <button className="generate-button" onClick={handleGenerate} disabled={loading || isGenerating}>
               {loading || isGenerating ? 'Generating...' : 'Generate screenplay'}
             </button>
-            {book.screenplay && (
-              <button className="download-button" onClick={() => onDownloadPdf(book)}>
-                Download PDF
-              </button>
-            )}
           </div>
         </div>
         <div className="screenplay-copy">
           {book.screenplay ? (
-            <pre>{book.screenplay}</pre>
+            <>
+              <pre>{book.screenplay}</pre>
+              <div style={{
+                borderTop: '0.5px solid rgba(255,255,255,0.08)',
+                marginTop: '1.5rem',
+                paddingTop: '1rem',
+                textAlign: 'center'
+              }}>
+                <p style={{
+                  fontFamily: 'Cormorant Garamond, serif',
+                  fontStyle: 'italic',
+                  fontSize: '13px',
+                  color: 'rgba(255,255,255,0.35)',
+                  lineHeight: 1.7,
+                  maxWidth: '480px',
+                  margin: '0 auto'
+                }}>
+                  This is an AI-generated proof of concept.
+                  Every great film deserves a human
+                  screenwriter who can bring their full
+                  craft to it. Page to Screen connects
+                  stories to the industry — the art
+                  belongs to the writers.
+                </p>
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
+                <button className="download-button" onClick={() => onDownloadPdf(book)}>
+                  Download PDF
+                </button>
+              </div>
+            </>
           ) : (
             <p className="screenplay-empty">
               No screenplay has been generated yet. Use the button above to create the opening scene.
