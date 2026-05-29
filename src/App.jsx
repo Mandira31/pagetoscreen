@@ -167,29 +167,39 @@ async function fetchBookMetadata({ title, author, genre, why }) {
     })
   })
 
-  const data = await response.json()
-  const text = data.choices[0].message.content
-  const parsed = JSON.parse(text)
-  if (!parsed) {
-    return {
-      logline: `A powerful adaptation of ${title} by ${author} that turns longing and danger into a cinematic mission.`,
-      tone: 'Bold and intimate with a cinematic thrust.',
-      world: 'A vivid film world populated by light and shadow.',
-      feeling: 'A stirring invitation to the film audience.',
-      chars: [title, author]
-    }
+  const fallback = {
+    logline: `A powerful adaptation of ${title} by ${author} that turns longing and danger into a cinematic mission.`,
+    tone: 'Bold and intimate with a cinematic thrust.',
+    world: 'A vivid film world populated by light and shadow.',
+    feeling: 'A stirring invitation to the film audience.',
+    chars: [title, author]
   }
 
-  return {
-    logline: parsed.logline || `A cinematic adaptation of ${title} by ${author}.`,
-    tone: parsed.tone || 'A confident cinematic tone.',
-    world: parsed.world || 'A richly imagined visual world.',
-    feeling: parsed.feeling || 'A feeling that pulls the audience in.',
-    chars: Array.isArray(parsed.chars)
-      ? parsed.chars
-      : typeof parsed.chars === 'string'
-      ? parsed.chars.split(',').map((item) => item.trim()).filter(Boolean)
-      : [title, author]
+  if (!response.ok) {
+    console.warn('Groq API error', response.status)
+    return fallback
+  }
+
+  const data = await response.json()
+  const text = data.choices?.[0]?.message?.content
+  if (!text) return fallback
+
+  try {
+    const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
+    const parsed = JSON.parse(cleaned)
+    return {
+      logline: parsed.logline || fallback.logline,
+      tone: parsed.tone || fallback.tone,
+      world: parsed.world || fallback.world,
+      feeling: parsed.feeling || fallback.feeling,
+      chars: Array.isArray(parsed.chars)
+        ? parsed.chars
+        : typeof parsed.chars === 'string'
+        ? parsed.chars.split(',').map((item) => item.trim()).filter(Boolean)
+        : [title, author]
+    }
+  } catch {
+    return fallback
   }
 }
 
