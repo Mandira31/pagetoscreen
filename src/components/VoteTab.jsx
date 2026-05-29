@@ -18,7 +18,7 @@ export default function VoteTab({ books = [], votedIds = [], onToggleVote, onSee
         book.title.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
         book.author.toLowerCase().includes(searchTerm.trim().toLowerCase())
       )
-    : topBooks.slice(0, 5)
+    : topBooks
 
   const rankLabel = searchTerm.trim() ? 'Search results' : 'Top this month'
 
